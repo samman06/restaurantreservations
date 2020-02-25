@@ -1,4 +1,5 @@
 const Table = require('../models/table');
+const validationTableInput = require("../validation/table");
 
 class tablesController {
     async getAllTables(req, res) {
@@ -11,6 +12,8 @@ class tablesController {
     };
 
     async addNewTable(req, res) {
+        const {isValid, errors} = validationTableInput(req.body);
+        if (!isValid) return res.json({errors});
         try {
             const {tableNumber, numberOfPerson} = req.body;
             const table = await Table.findOne({tableNumber});
