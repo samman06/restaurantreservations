@@ -8,4 +8,10 @@ tableRouter.get('/', async (req, res) => {
     await table.getAllTables(req, res)
 });
 
+//delete table by id
+tableRouter.delete('/:id', async (req, res) => {
+    await table.deleteTable(req, res);
+});
+
+
 module.exports = tableRouter;
