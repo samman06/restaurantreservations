@@ -10,6 +10,23 @@ class tablesController {
         }
     };
 
+    async addNewTable(req, res) {
+        try {
+            const {tableNumber, numberOfPerson} = req.body;
+            const table = await Table.findOne({tableNumber});
+            if (table) return res.status(201).json({errors: {tableNumber: 'The table is already exists'}});
+            const newTable = await new Table({
+                tableNumber, numberOfPerson
+            });
+            const {_id} = await newTable.save();
+            return res.status(201).json({_id,message: "The table is Created successfully",})
+        } catch (e) {
+            return res.status(500).json({error: err})
+        }
+
+    }
+
+
     async deleteTable(req, res) {
         try {
             const table = await Table.findByIdAndRemove(req.params.id);
