@@ -3,6 +3,9 @@ const app = express();
 const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+
+const tableRouter = require('./routes/table');
+
 const PORT = process.env.PORT || 4000;
 const cors = require('cors');
 const keys = require('./configs/keys');
@@ -24,6 +27,8 @@ mongoose.connect(uri, {
     else console.log(err);
 
 });
+
+app.use('/table', tableRouter);
 
 
 
