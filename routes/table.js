@@ -13,6 +13,11 @@ tableRouter.post('/', async (req, res) => {
     await table.addNewTable(req, res);
 });
 
+//get all the currently available tables
+tableRouter.get('/available', async (req, res) => {
+    await table.getAvailableTables(req, res);
+});
+
 //delete table by id
 tableRouter.delete('/:id', async (req, res) => {
     await table.deleteTable(req, res);
