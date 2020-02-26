@@ -23,7 +23,7 @@ class tablesController {
                 tableNumber, numberOfPerson
             });
             const {_id} = await newTable.save();
-            return res.status(201).json({_id,message: "The table is Created successfully",})
+            return res.status(200).json({_id,message: "The table is Created successfully",})
         } catch (e) {
             return res.status(500).json({error: err})
         }
@@ -37,9 +37,9 @@ class tablesController {
             const tableTimeReservations = this.getTableTimeReservations(reservations);
             const allTables = await Table.find();
             const availableTables = this.getCurrentlyAvailableTables(allTables,tableTimeReservations);
-            return res.send(availableTables)
+            return res.status(200).send(availableTables)
         } catch (e) {
-            return res.send('error in getting data')
+            return res.status(404).send('error in getting data')
         }
     }
 
