@@ -91,6 +91,4 @@ describe("testing on table module", () => {
                 })
         });
     })
-
-
 });
