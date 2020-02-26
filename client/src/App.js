@@ -7,6 +7,8 @@ import Home from "./components/layout/Home";
 import Tables from "./components/tables/Tables"
 import AddNewTable from "./components/tables/AddNewTable"
 import AvailableTables from "./components/availableTables/AvailableTables"
+import Reservations from "./components/reservations/Reservations"
+
 
 class App extends Component {
     render() {
@@ -22,6 +24,11 @@ class App extends Component {
                     <Route path='/tables/available' exact component={AvailableTables}/>
                     <Route path='/tables/new' exact component={Nav}/>
                     <Route path='/tables/new' exact component={AddNewTable}/>
+
+                    <Route path='/reservations' exact component={Nav}/>
+                    <Route path='/reservations' exact component={Reservations}/>
+                    <Route path='/reservations/reserve' exact component={Nav}/>
+
                 </div>
             </BrowserRouter>
         );
