@@ -4,6 +4,7 @@ import './App.css';
 
 import Nav from "./components/layout/Nav";
 import Home from "./components/layout/Home";
+import Tables from "./components/tables/Tables"
 
 
 class App extends Component {
@@ -13,6 +14,9 @@ class App extends Component {
                 <div className='App'>
                     <Route path='/' exact component={Nav}/>
                     <Route path='/' exact component={Home}/>
+
+                    <Route path='/tables' exact component={Nav}/>
+                    <Route path='/tables' exact component={Tables}/>
                 </div>
             </BrowserRouter>
         );
