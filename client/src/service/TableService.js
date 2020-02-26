@@ -7,6 +7,13 @@ export const getAllTables = () => {
         .catch(err => err);
 };
 
+// Get All Available Reservations
+export const getAvailableTables = () => {
+    return axios.get(`http://127.0.0.1:4000/table/available`)
+        .then(tables => tables)
+        .catch(err => err);
+};
+
 // Add New table
 export const addNewTable = (tableData) => {
     return axios.post(`http://127.0.0.1:4000/table/`,tableData)
