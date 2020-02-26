@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import TableItem from "./TableItem";
+import {deleteTable} from "../../service/TableService";
 
 class TablesData extends Component {
     constructor(props) {
@@ -10,7 +11,9 @@ class TablesData extends Component {
     }
 
     onClickDelete = (tableId) => {
-        console.log(1);
+        deleteTable(tableId);
+        let tables = this.state.tables.filter(table => table._id !== tableId);
+        this.setState({tables})
     };
 
     render() {
