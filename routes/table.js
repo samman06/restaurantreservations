@@ -23,5 +23,4 @@ tableRouter.delete('/:id', async (req, res) => {
     await table.deleteTable(req, res);
 });
 
-
 module.exports = tableRouter;

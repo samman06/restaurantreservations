@@ -2,7 +2,6 @@ const Table = require('../models/table');
 const validationTableInput = require("../validation/table");
 const Reservation = require('../models/reservation');
 
-
 class tablesController {
     async getAllTables(req, res) {
         try {
@@ -79,7 +78,6 @@ class tablesController {
         });
         return availableTables;
     }
-
 }
 
 module.exports = tablesController;

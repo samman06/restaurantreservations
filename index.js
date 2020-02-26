@@ -7,6 +7,7 @@ const cors = require('cors');
 const tableRouter = require('./routes/table');
 const TableModel = require('./models/table');
 const dummyTables = require('./dummyData/tables')();
+const reservationRouter = require('./routes/reservation');
 const PORT = process.env.PORT || 4000;
 const keys = require('./configs/keys');
 app.use(cors());
@@ -29,8 +30,10 @@ mongoose.connect(uri, {
 
 });
 
+// table router
 app.use('/table', tableRouter);
-
+// reservations router
+app.use('/reservation', reservationRouter);
 const insertDummyTables = async () => {
     const data = await TableModel.find();
     if (data.length !== 0) return;
