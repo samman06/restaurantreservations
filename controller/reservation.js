@@ -1,10 +1,13 @@
 const Reservation = require('../models/reservation');
 const Table = require('../models/table');
+const validationReservationInput = require("../validation/reservations");
 const validateGetReservationInput = require("../validation/getReservations");
 
 class reservationController {
 
     async addNewReservation(req, res) {
+        const {isValid, errors} = validationReservationInput(req.body);
+        if (!isValid) return res.json({errors});
         const currentDate = new Date().toJSON().slice(0, 10);
         const {reserveDate} = req.body;
         if (reserveDate < currentDate)
@@ -26,7 +29,6 @@ class reservationController {
     }
 
     async getReservationsForSpecificDate(req, res) {
-
         const {reserveDate} = req.params;
         const {isValid, errors} = validateGetReservationInput(reserveDate);
         if (!isValid) return res.json({errors});
@@ -37,8 +39,6 @@ class reservationController {
             return res.send({"err": e})
         }
     }
-
-
 
     getAvailableHoursForReserve(reservation) {
         let availableHoursForReserve =
@@ -66,7 +66,6 @@ class reservationController {
             return {message: "available"};
         }
     }
-
 }
 
 module.exports = reservationController;
