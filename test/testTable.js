@@ -5,6 +5,7 @@ chai.use(chaiHttp);
 const app = require('../index');
 describe("testing on table module", () => {
 
+    let tableId;
 
     describe("GET /table", () => {
         it("should get all tables", (done) => {
@@ -36,6 +37,7 @@ describe("testing on table module", () => {
                 .post('/table')
                 .send({tableNumber: "5532", numberOfPerson: "3"})
                 .end(res => {
+                    tableId = res.body._id;
                     res.should.have.status(201);
                     res.body.should.be.a("Object");
                     res.body.message.should.contains("The table is Created successfully");
@@ -68,7 +70,27 @@ describe("testing on table module", () => {
         });
     });
 
+    describe("DELETE /table", () => {
+        it("should delete table", (done) => {
+            chai.request(app)
+                .delete(`/table/${tableId}`)
+                .end(res => {
+                    res.should.have.status(200);
+                    res.body.msg.should.contains("deleted");
+                    done();
+                })
+        });
 
+        it("should not delete table because it is not a valid id", (done) => {
+            chai.request(app)
+                .delete(`/table/1231321`)
+                .end(res => {
+                    res.should.have.status(404);
+                    res.body.error.should.contains("error in delete data");
+                    done();
+                })
+        });
+    })
 
 
 });
