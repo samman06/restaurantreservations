@@ -62,7 +62,7 @@ describe("testing on table module", () => {
                 .post('/table')
                 .send({tableNumber: "31W", numberOfPerson: "3W"})
                 .end(res => {
-                    res.should.have.status(200);
+                    res.should.have.status(405);
                     res.body.errors.numberOfPerson.should.contains("number of person should be number");
                     res.body.errors.tableNumber.should.contains("the number of table should be number");
                     done();

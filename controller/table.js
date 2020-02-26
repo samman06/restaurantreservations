@@ -6,7 +6,7 @@ class tablesController {
     async getAllTables(req, res) {
         try {
             const tables = await Table.find();
-            return res.json(tables)
+            return res.status(200).json(tables)
         } catch (e) {
             return res.send('error in getting tables')
         }
@@ -14,7 +14,7 @@ class tablesController {
 
     async addNewTable(req, res) {
         const {isValid, errors} = validationTableInput(req.body);
-        if (!isValid) return res.json({errors});
+        if (!isValid) return res.status(405).json({errors});
         try {
             const {tableNumber, numberOfPerson} = req.body;
             const table = await Table.findOne({tableNumber});
