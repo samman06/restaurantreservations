@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {getAllTables} from "../../service/TableService"
+import TableRoute from "../common/TableRoute"
 
 import TablesData from "./TablesData"
 
@@ -35,6 +36,7 @@ class Tables extends Component {
         }
         return (
             <div>
+                <TableRoute/>
                 {tablesData}
             </div>
         );
