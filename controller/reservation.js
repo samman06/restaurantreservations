@@ -1,10 +1,14 @@
 const Reservation = require('../models/reservation');
 const Table = require('../models/table');
+const validateGetReservationInput = require("../validation/getReservations");
 
 class reservationController {
 
     async addNewReservation(req, res) {
-
+        const currentDate = new Date().toJSON().slice(0, 10);
+        const {reserveDate} = req.body;
+        if (reserveDate < currentDate)
+            return res.json({error: 'sorry, you can not reserve table for a reserveDate before today'});
         const {tableId, clientName, from, to} = req.body;
         try {
             const table = await Table.findById(tableId);
@@ -23,6 +27,9 @@ class reservationController {
 
     async getReservationsForSpecificDate(req, res) {
 
+        const {reserveDate} = req.params;
+        const {isValid, errors} = validateGetReservationInput(reserveDate);
+        if (!isValid) return res.json({errors});
         try {
             const reservationsOfSpecificDate = await Reservation.find({reserveDate}).populate('tableId');
             return res.send(reservationsOfSpecificDate)
