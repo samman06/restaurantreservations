@@ -37,31 +37,19 @@
 ### photo of The Site
 
 ###### Home Page
-![alt text](https://github.com/samman06/restaurantreservations/blob/master/client/images/home.png)
-
 ![alt text](./client/images/home.png)
 
 ###### all Tables Page
-![alt text](https://github.com/samman06/restaurantreservations/blob/master/client/images/allTables.png)
-
 ![alt text](./client/images/allTables.png)
 
 ###### Available Tables Page
-![alt text](https://github.com/samman06/restaurantreservations/blob/master/client/images/availableTables.png)
-
 ![alt text](./client/images/availableTables.png)
 
 ###### Adding New Table Page
-![alt text](https://github.com/samman06/restaurantreservations/blob/master/client/images/addnewTable.png)
-
 ![alt text](./client/images/addnewTable.png)
 
 ###### Reservations Page
-![alt text](https://github.com/samman06/restaurantreservations/blob/master/client/images/getReservations.png)
-
 ![alt text](./client/images/getReservations.png)
 
 ###### Reservations Page
-![alt text](https://github.com/samman06/restaurantreservations/blob/master/client/images/addNewReservsation.png)
-
 ![alt text](./client/images/addNewReservsation.png)
