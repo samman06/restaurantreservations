@@ -51,5 +51,8 @@
 ###### Reservations Page
 ![alt text](./client/images/getReservations.png)
 
-###### Reservations Page
+###### add Reservation Page
 ![alt text](./client/images/addNewReservsation.png)
+
+###### errors Reservation Page
+![alt text](./client/images/errorsAdding.png)
