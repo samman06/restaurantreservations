@@ -35,10 +35,10 @@ describe("testing on table module", () => {
         it("should add new table", (done) => {
             chai.request(app)
                 .post('/table')
-                .send({tableNumber: "123212397", numberOfPerson: "3"})
+                .send({tableNumber: "553200", numberOfPerson: "3"})
                 .end(res => {
                     tableId = res.body._id;
-                    res.should.have.status(201);
+                    res.should.have.status(200);
                     res.body.should.be.a("Object");
                     res.body.message.should.contains("The table is Created successfully");
                     done();
@@ -48,7 +48,7 @@ describe("testing on table module", () => {
         it("should not add new table because the table is already exists", (done) => {
             chai.request(app)
                 .post('/table')
-                .send({tableNumber: "5532", numberOfPerson: "3"})
+                .send({tableNumber: "553200", numberOfPerson: "3"})
                 .end(res => {
                     res.should.have.status(201);
                     res.body.should.be.a("Object");

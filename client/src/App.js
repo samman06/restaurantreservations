@@ -8,7 +8,7 @@ import Tables from "./components/tables/Tables"
 import AddNewTable from "./components/tables/AddNewTable"
 import AvailableTables from "./components/availableTables/AvailableTables"
 import Reservations from "./components/reservations/Reservations"
-
+import ReservationsForDate from "./components/reservations/ReservationsForDate"
 
 class App extends Component {
     render() {
@@ -28,11 +28,11 @@ class App extends Component {
                     <Route path='/reservations' exact component={Nav}/>
                     <Route path='/reservations' exact component={Reservations}/>
                     <Route path='/reservations/reserve' exact component={Nav}/>
+                    <Route path='/reservations/reserve' exact component={ReservationsForDate}/>
 
                 </div>
             </BrowserRouter>
         );
     }
 }
-
 export default App;

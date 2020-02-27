@@ -4,12 +4,12 @@ let chaiHttp = require('chai-http');
 let should = chai.should();
 chai.use(chaiHttp);
 const app = require('../index');
-describe("testing on reservation module", () => {
+describe("testing on reservation module", async () => {
 
-    describe("GET /reservation", () => {
+    await describe("GET /reservation", () => {
         it("should get all reservation", (done) => {
             chai.request(app)
-                .get(`/reservation/2020-02-22`)
+                .get(`/reservation/2020-03-27`)
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('Array');
@@ -18,7 +18,7 @@ describe("testing on reservation module", () => {
         });
     });
 
-    describe("POST /reservation", () => {
+    await describe("POST /reservation", () => {
         let tableId = mongoose.Types.ObjectId('4edd40c86762e0fb12000003');
 
         it("should not add new reservation", (done) => {
