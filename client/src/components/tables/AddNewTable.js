@@ -77,5 +77,4 @@ class AddNewTable extends Component {
     }
 }
 
-
 export default AddNewTable;
