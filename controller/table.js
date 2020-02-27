@@ -14,7 +14,7 @@ class tablesController {
 
     async addNewTable(req, res) {
         const {isValid, errors} = validationTableInput(req.body);
-        if (!isValid) return res.status(405).json({errors});
+        if (!isValid) return res.json({errors});
         try {
             const {tableNumber, numberOfPerson} = req.body;
             const table = await Table.findOne({tableNumber});
