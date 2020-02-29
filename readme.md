@@ -4,9 +4,9 @@
 
 
 #before running the code
-*you can use local mongo database but check on my database name in ./config/keys.js
+* you can use local mongo database but check on my database name in ./config/keys.js
 if you have the same name in your databases please change the name in my keys.js file from "restaurant" to another one.
-*if you want to use my online database you can comment the line in keys.js file and uncomment the next line
+* if you want to use my online database you can comment the line in keys.js file and uncomment the next line
 but it will do a problem with the test cases.
 
 ## You Can Do... 
