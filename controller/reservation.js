@@ -15,16 +15,16 @@ class reservationController {
         const {tableId, clientName, from, to} = req.body;
         try {
             const table = await Table.findById(tableId);
-            if (!table) return res.status(400).json({table: 'this table dose not exist'});
+            if (!table) return res.json({table: 'this table dose not exist'});
             let reservation = await Reservation.findOne({tableId, reserveDate});
             const {message} = await this.createNewReserveOrNotAvailableTime(reservation, tableId, clientName, reserveDate, from, to);
-            if (message.indexOf("Created") >= 0) return res.status(201).json({message: message});
-            if (message.indexOf("Table") >= 0) return res.status(201).json({errors: {table: message}});
+            if (message.indexOf("Created") >= 0) return res.json({message: message});
+            if (message.indexOf("Table") >= 0) return res.json({errors: {table: message}});
             reservation.reserveTime.push({from, to});
             await reservation.save();
-            return res.status(201).json({message: "Created reservation successfully",})
+            return res.json({message: "Created reservation successfully",})
         } catch (e) {
-            return res.status(500).json({error: e})
+            return res.json({error: e})
         }
     }
 

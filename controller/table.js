@@ -6,7 +6,7 @@ class tablesController {
     async getAllTables(req, res) {
         try {
             const tables = await Table.find();
-            return res.status(200).json(tables)
+            return res.json(tables)
         } catch (e) {
             return res.send('error in getting tables')
         }
@@ -18,16 +18,15 @@ class tablesController {
         try {
             const {tableNumber, numberOfPerson} = req.body;
             const table = await Table.findOne({tableNumber});
-            if (table) return res.status(201).json({errors: {tableNumber: 'The table is already exists'}});
+            if (table) return res.json({errors: {tableNumber: 'The table is already exists'}});
             const newTable = await new Table({
                 tableNumber, numberOfPerson
             });
             const {_id} = await newTable.save();
-            return res.status(200).json({_id,message: "The table is Created successfully",})
+            return res.json({_id,message: "The table is Created successfully",})
         } catch (e) {
-            return res.status(500).json({error: err})
+            return res.json({error: err})
         }
-
     }
 
     async getAvailableTables(req, res) {
@@ -37,9 +36,9 @@ class tablesController {
             const tableTimeReservations = this.getTableTimeReservations(reservations);
             const allTables = await Table.find();
             const availableTables = this.getCurrentlyAvailableTables(allTables,tableTimeReservations);
-            return res.status(200).send(availableTables)
+            return res.send(availableTables)
         } catch (e) {
-            return res.status(404).send('error in getting data')
+            return res.send('error in getting data')
         }
     }
 

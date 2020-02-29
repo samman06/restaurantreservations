@@ -50,7 +50,6 @@ describe("testing on table module", () => {
                 .post('/table')
                 .send({tableNumber: "553200", numberOfPerson: "3"})
                 .end(res => {
-                    res.should.have.status(201);
                     res.body.should.be.a("Object");
                     res.body.errors.tableNumber.should.contains("The table is already exists");
                     done();
@@ -62,7 +61,6 @@ describe("testing on table module", () => {
                 .post('/table')
                 .send({tableNumber: "31W", numberOfPerson: "3W"})
                 .end(res => {
-                    res.should.have.status(405);
                     res.body.errors.numberOfPerson.should.contains("number of person should be number");
                     res.body.errors.tableNumber.should.contains("the number of table should be number");
                     done();
