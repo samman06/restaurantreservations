@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 4000;
 const keys = require('./configs/keys');
 app.use(cors());
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(expressValidator());
 
@@ -35,15 +35,17 @@ mongoose.connect(uri, {
 app.use('/table', tableRouter);
 // reservations router
 app.use('/reservation', reservationRouter);
-//server static assets if in production
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static('client/build'))
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build'))
-    })
+
+// Server static assets if in production
+if (process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express.static('client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
 }
 
-const insertDummyTables = async () => {
+const insertDummyTables = async() => {
     const data = await TableModel.find();
     if (data.length !== 0) return;
     await dummyTables.map(table => {
