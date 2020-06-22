@@ -6,8 +6,11 @@ class tablesController {
     async getAllTables(req, res) {
         try {
             const tables = await Table.find();
+            console.log(2);
+            console.log(tables);
             return res.json(tables)
         } catch (e) {
+            console.log(3);
             return res.send('error in getting tables')
         }
     };

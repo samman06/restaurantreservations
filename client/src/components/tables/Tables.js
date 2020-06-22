@@ -13,11 +13,9 @@ class Tables extends Component {
         };
     }
 
-    componentDidMount() {
-        getAllTables()
-            .then(tables => {
-                this.setState({tables: tables.data})
-            });
+    async componentDidMount() {
+        let tables = await getAllTables();
+        this.setState({tables: tables.data})
     }
 
     render() {
@@ -25,11 +23,9 @@ class Tables extends Component {
         let tablesData;
         if (tables.length === 0) {
             tablesData = (
-                <div >
-                    <h3 className="m-5">
-                        there is no table
-                    </h3>
-                </div>
+                <h3 className="m-5">
+                    there is no tables
+                </h3>
             )
         } else {
             tablesData = <TablesData tables={tables}/>

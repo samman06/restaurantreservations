@@ -5,6 +5,8 @@ const table = new tableController();
 
 //get all tables
 tableRouter.get('/', async (req, res) => {
+    console.log(1);
+    // res.send("kjgkjgjk")
     await table.getAllTables(req, res)
 });
 

@@ -1,15 +1,19 @@
 import axios from 'axios'
+let URI = "http://localhost:4000";
+if (process.env.NODE_ENV === "production") {
+    URI = "https://restaurantreservations.herokuapp.com"
+}
 
 // add New Reservation
 export const addNewReservation = (reservationData) => {
-    return axios.post(`http://127.0.0.1:4000/reservation/`, reservationData)
+    return axios.post(`${URI}/reservation/`, reservationData)
         .then(reservation => reservation)
         .catch(err => err);
 };
 
 // get Reservations ForSpecificDate
 export const getReservationsForSpecificDate = (reserveDate) => {
-    return axios.get(`http://127.0.0.1:4000/reservation/${reserveDate}`)
+    return axios.get(`${URI}/reservation/${reserveDate}`)
         .then(reservations => reservations)
         .catch(err => err);
 };
