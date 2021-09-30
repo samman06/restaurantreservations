@@ -19,18 +19,18 @@ describe("testing on reservation module", async() => {
     });
 
     await describe("POST /reservation", () => {
-        let tableId = mongoose.Types.ObjectId('4edd40c86762e0fb12000003');
+        let tableId = //mongoose.Types.ObjectId('4edd40c86762e0fb12000003');
 
-        xit("should not add new reservation", (done) => {
-            chai.request(app)
-                .post('/reservation')
-                .send({ tableId, reserveDate: "2020-02-22", from: "2", to: "3" })
-                .end(({ body }) => {
-                    body.should.be.a("Object");
-                    body.error.should.contains("sorry, you can not reserve table for a reserveDate before today");
-                    done();
-                })
-        });
+            xit("should not add new reservation", (done) => {
+                chai.request(app)
+                    .post('/reservation')
+                    .send({ tableId, reserveDate: "2020-02-22", from: "2", to: "3" })
+                    .end(({ body }) => {
+                        body.should.be.a("Object");
+                        body.error.should.contains("sorry, you can not reserve table for a reserveDate before today");
+                        done();
+                    })
+            });
         xit("should not add new reservation", (done) => {
             chai.request(app)
                 .post('/reservation')
