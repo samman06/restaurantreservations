@@ -1,14 +1,31 @@
-db:
-  image: mongo
-  ports:
-    - "27017:27017"
-  restart: always
-web:
-  build: .
-  volumes:
-    - ./:/app
-  ports:
-    - "4000:4000"
-  links:
-    - db
-  command: nodemon /app/index.js
+version: '3'
+services:
+  mongo:
+    container_name: mongodb
+    image: mongo:4.4.6
+    environment: 
+      - MONGO_INITDB_DATABASE=restaurant
+      - MONGO_INITDB_USERNAME=root
+      - MONGO_INITDB_PASSWORD=pass
+    ports:
+      - "27017:27017"
+    restart: always
+  node:
+    restart: always
+    build: .
+    ports:
+      - "4000:4000"
+    links: 
+      - mongo
+  react:
+    restart: always
+    build: 
+      context: ./client
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - node
+    ports: 
+      - 3000:3000
+    volumes: 
+      - /app/node_modules
+      - ./client/:/app

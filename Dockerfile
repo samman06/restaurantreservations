@@ -1,13 +1,13 @@
-FROM node:8.12.0
+FROM node:14
 
 WORKDIR /app
 
 RUN npm install nodemon -g
 
-COPY package.json /app/package.json
+COPY package.json .
 
 RUN npm install
 
-COPY index.js /app
+COPY . .
 
-EXPOSE 4000
+CMD [ "nodemon", "." ]
