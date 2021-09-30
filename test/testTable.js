@@ -8,6 +8,18 @@ describe("testing on table module", () => {
     let tableId;
 
     describe("GET /table", () => {
+        xit("should get all tables", (done) => {
+            chai.request(app)
+                .get('/table')
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('Array');
+                    done();
+                });
+        });
+    });
+
+    xdescribe("GET /table", () => {
         it("should get all tables", (done) => {
             chai.request(app)
                 .get('/table')
@@ -19,7 +31,7 @@ describe("testing on table module", () => {
         });
     });
 
-    describe("GET /table/available", () => {
+    xdescribe("GET /table/available", () => {
         it("should get all available tables", (done) => {
             chai.request(app)
                 .get('/table/available')
@@ -31,11 +43,11 @@ describe("testing on table module", () => {
         });
     });
 
-    describe("POST /table", () => {
+    xdescribe("POST /table", () => {
         it("should add new table", (done) => {
             chai.request(app)
                 .post('/table')
-                .send({tableNumber: "553200", numberOfPerson: "3"})
+                .send({ tableNumber: "553200", numberOfPerson: "3" })
                 .end(res => {
                     tableId = res.body._id;
                     res.should.have.status(200);
@@ -48,7 +60,7 @@ describe("testing on table module", () => {
         it("should not add new table because the table is already exists", (done) => {
             chai.request(app)
                 .post('/table')
-                .send({tableNumber: "553200", numberOfPerson: "3"})
+                .send({ tableNumber: "553200", numberOfPerson: "3" })
                 .end(res => {
                     res.body.should.be.a("Object");
                     res.body.errors.tableNumber.should.contains("The table is already exists");
@@ -59,7 +71,7 @@ describe("testing on table module", () => {
         it("should not add new table because the data is not valid", (done) => {
             chai.request(app)
                 .post('/table')
-                .send({tableNumber: "31W", numberOfPerson: "3W"})
+                .send({ tableNumber: "31W", numberOfPerson: "3W" })
                 .end(res => {
                     res.body.errors.numberOfPerson.should.contains("number of person should be number");
                     res.body.errors.tableNumber.should.contains("the number of table should be number");
@@ -68,7 +80,7 @@ describe("testing on table module", () => {
         });
     });
 
-    describe("DELETE /table", () => {
+    xdescribe("DELETE /table", () => {
         it("should delete table", (done) => {
             chai.request(app)
                 .delete(`/table/${tableId}`)
