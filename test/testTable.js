@@ -20,7 +20,7 @@ describe("testing on table module", () => {
     });
 
     xdescribe("GET /table", () => {
-        it("should get all tables", (done) => {
+        xit("should get all tables", (done) => {
             chai.request(app)
                 .get('/table')
                 .end((err, res) => {
@@ -32,7 +32,7 @@ describe("testing on table module", () => {
     });
 
     xdescribe("GET /table/available", () => {
-        it("should get all available tables", (done) => {
+        xit("should get all available tables", (done) => {
             chai.request(app)
                 .get('/table/available')
                 .end((err, res) => {
@@ -44,7 +44,7 @@ describe("testing on table module", () => {
     });
 
     xdescribe("POST /table", () => {
-        it("should add new table", (done) => {
+        xit("should add new table", (done) => {
             chai.request(app)
                 .post('/table')
                 .send({ tableNumber: "553200", numberOfPerson: "3" })
@@ -57,7 +57,7 @@ describe("testing on table module", () => {
                 })
         });
 
-        it("should not add new table because the table is already exists", (done) => {
+        xit("should not add new table because the table is already exists", (done) => {
             chai.request(app)
                 .post('/table')
                 .send({ tableNumber: "553200", numberOfPerson: "3" })
@@ -68,7 +68,7 @@ describe("testing on table module", () => {
                 })
         });
 
-        it("should not add new table because the data is not valid", (done) => {
+        xit("should not add new table because the data is not valid", (done) => {
             chai.request(app)
                 .post('/table')
                 .send({ tableNumber: "31W", numberOfPerson: "3W" })
@@ -81,7 +81,7 @@ describe("testing on table module", () => {
     });
 
     xdescribe("DELETE /table", () => {
-        it("should delete table", (done) => {
+        xit("should delete table", (done) => {
             chai.request(app)
                 .delete(`/table/${tableId}`)
                 .end(res => {
@@ -91,7 +91,7 @@ describe("testing on table module", () => {
                 })
         });
 
-        it("should not delete table because it is not a valid id", (done) => {
+        xit("should not delete table because xit is not a valid id", (done) => {
             chai.request(app)
                 .delete(`/table/1231321`)
                 .end(res => {
